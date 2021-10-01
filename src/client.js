@@ -3,7 +3,7 @@ import React from 'react'
 import { hydrate } from 'react-dom'
 import { Provider } from 'react-redux'
 import { configureStore } from 'reducers'
-import App from 'App/App'
+import App from './App/App'
 
 const store = configureStore(window.__PRELOADED_STATE__)
 

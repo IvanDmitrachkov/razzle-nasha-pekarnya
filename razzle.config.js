@@ -1,23 +1,35 @@
 const path = require('path')
 
 module.exports = {
-  modify: (config, { dev, target }) => {
-    config.resolve.modules.unshift(path.resolve(__dirname, './src'))
-
-    return config
-  },
   plugins: [
     {
       name: 'scss',
       options: {
         sass: {
+          prependData: '@import "styles/common/common";',
+          data: '@import "styles/common/common";',
+          additionalData: '@import "styles/common/common";',
+          sourceMap: false,
+          sassOptions: {
+            prependData: '@import "styles/common/common";',
+            additionalData: '@import "styles/common/common";',
+            sourceMap: false,
+            includePaths: [path.resolve(__dirname, 'src/')]
+          },
           dev: {
-            prependData: '@import "styles/common/common";'
-
+            additionalData: '@import "styles/common/common";',
+            sourceMap: false,
           },
           prod: {
-            prependData: '@import "styles/common/common";'
+            additionalData: '@import "styles/common/common";',
+            sourceMap: false,
           }
+        },
+        sassOptions: {
+          prependData: '@import "styles/common/common";',
+          data: '@import "styles/common/common";',
+          sourceMap: false,
+          includePaths: [path.resolve(__dirname, 'src/')]
         },
         postcss: {
           dev: {

@@ -1,6 +1,6 @@
 import http from 'http'
 
-let app = require('server/server').default
+let app = require('./server').default
 
 const server = http.createServer(app)
 
@@ -8,7 +8,7 @@ let currentApp = app
 
 server
   .listen(process.env.PORT || 3000, () => {
-    console.log('🚀 started on http://localhost:3000')
+    console.log('🚀 started on http://localhost:3001')
   })
   .on('error', error => {
     console.log(error)
@@ -17,11 +17,11 @@ server
 if (module.hot) {
   console.log('✅  Server-side HMR Enabled!')
 
-  module.hot.accept('./server/server', () => {
+  module.hot.accept('./server', () => {
     console.log('🔁  HMR Reloading `./server`...')
 
     try {
-      app = require('./server/server').default
+      app = require('./server').default
       server.removeListener('request', currentApp)
       server.on('request', app)
       currentApp = app
