@@ -2,7 +2,6 @@
 import React from 'react'
 import css from './pageOrderResult.module.scss'
 import Bg from 'components/Bg/Bg'
-import Header from 'containers/Header/Header'
 import Container from 'components/Container/Container'
 import { MdCheck, MdPrint } from 'react-icons/md'
 import Button from 'components/Button/Button'
@@ -22,7 +21,6 @@ const PageOrderResult = () => {
 
   return (
     <Bg color='grey' className={css[currentDevice]}>
-      <Header />
       <Container className={css.container}>
         <MdCheck className={css.check} />
         <div className={css.title}>Заказ успешно выполнен</div>

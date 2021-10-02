@@ -5,7 +5,6 @@ import _ from 'lodash'
 import { FiPlus } from 'react-icons/fi'
 import { useRemoteData } from '@aic/react-remote-data-provider'
 // components
-import Header from 'containers/Header/Header'
 import Container from 'components/Container/Container'
 import SliderPhoto from 'components/SliderPhoto/SliderPhoto'
 import BackLink from 'components/BackLink/BackLink'
@@ -60,7 +59,6 @@ const PageProductsDetail = () => {
   return (
     <div>
       <Helmet {...helmetData} />
-      <Header />
       <Container className={css.row}>
         <div className={css.left}>
           <BackLink />

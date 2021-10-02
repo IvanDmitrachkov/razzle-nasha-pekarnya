@@ -3,7 +3,6 @@ import React from 'react'
 import { useRemoteData } from '@aic/react-remote-data-provider'
 import FETCH_ABOUT from 'api/fetch/FETCH_ABOUT'
 import ContentConstructor from 'components/СontentConstructor/СontentConstructor'
-import Header from 'containers/Header/Header'
 import useMeta from 'api/hooks/useMeta'
 import Helmet from 'components/Helmet/Helmet'
 
@@ -18,7 +17,6 @@ const PageAbout = () => {
   return (
     <div>
       <Helmet {...aboutMeta} />
-      <Header />
       <ContentConstructor items={contents} />
     </div>
   )

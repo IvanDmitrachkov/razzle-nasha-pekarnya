@@ -3,7 +3,6 @@ import React, { useMemo } from 'react'
 import { useRemoteData } from '@aic/react-remote-data-provider'
 import FETCH_NEWS_DETAIL from 'api/fetch/FETCH_NEWS_DETAIL'
 import { useParams } from 'react-router-dom'
-import Header from 'containers/Header/Header'
 import ContentConstructor from 'components/СontentConstructor/СontentConstructor'
 import BackLink from 'components/BackLink/BackLink'
 import Container from 'components/Container/Container'
@@ -25,7 +24,6 @@ const PageNewsDetail = () => {
 
   return (
     <div style={{ marginTop: '3.2rem' }}>
-      <Header />
       <Helmet {...helmetData} />
       <Container>
         <BackLink />

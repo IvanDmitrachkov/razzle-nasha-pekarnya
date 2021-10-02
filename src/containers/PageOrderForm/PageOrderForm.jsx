@@ -7,7 +7,6 @@ import css from './pageOrderForm.module.scss'
 import usePageOrderForm from './usePageOrderForm'
 import useMeta from 'api/hooks/useMeta'
 // components
-import Header from 'containers/Header/Header'
 import Container from 'components/Container/Container'
 import Input from 'components/Input/Input'
 import BackLink from 'components/BackLink/BackLink'
@@ -31,7 +30,6 @@ const PageOrderForm = () => {
   if (botError) {
     return (
       <div className={css.errorBlock}>
-        <Header />
         <h2 className={css.title}>Не удалось произвести оплату</h2>
         <div>Произошла ошибка бота. Обратитесь к нашему администратору</div>
       </div>
@@ -47,7 +45,6 @@ const PageOrderForm = () => {
         submitting
       }) => (
         <form onSubmit={handleSubmit}>
-          <Header />
           <Helmet {...formMeta} />
           <Container className={css.container}>
             <BackLink />

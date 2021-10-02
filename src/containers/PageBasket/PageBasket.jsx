@@ -1,6 +1,5 @@
 // packages
 import React, { useMemo } from 'react'
-import Header from 'containers/Header/Header'
 import Bg from 'components/Bg/Bg'
 import useProducts from 'hooks/useProducts'
 import _ from 'lodash'
@@ -30,7 +29,6 @@ const PageBasket = () => {
   return (
     <Bg color='grey'>
       <Helmet {...basketMeta} />
-      <Header />
       <Container className={css.container}>
         <div className={css.header}>
           <BackLink />

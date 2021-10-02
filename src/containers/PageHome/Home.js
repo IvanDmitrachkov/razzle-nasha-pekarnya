@@ -1,6 +1,5 @@
 import React from 'react'
 // components
-import Header from 'containers/Header/Header'
 import News from 'containers/News/News'
 import Bg from 'components/Bg/Bg'
 import Helmet from 'components/Helmet/Helmet'
@@ -22,7 +21,6 @@ function Home () {
   return (
     <Bg color='grey' className={css.wrapper}>
       <Helmet {...mainPageMeta} />
-      <Header />
       <Categories />
       <HomeSlider />
       <div className={css.products}>
