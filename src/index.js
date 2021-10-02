@@ -8,7 +8,7 @@ let currentApp = app
 
 server
   .listen(process.env.PORT || 3000, () => {
-    console.log('🚀 started on http://localhost:3001')
+    console.log('🚀 started on http://localhost:3000')
   })
   .on('error', error => {
     console.log(error)
