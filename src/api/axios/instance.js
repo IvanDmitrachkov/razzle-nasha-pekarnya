@@ -1,7 +1,7 @@
 import axios from 'axios'
 
 const localApiUrl = 'http://localhost:1337'
-const productionApiUrl = 'http://cms.nasha-pekarnya11.ru/'
+const productionApiUrl = 'https://cms.nasha-pekarnya11.ru/'
 
 export const botUrl = 'https://bot.nasha-pekarnya11.ru/bot'
 
