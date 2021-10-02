@@ -15,7 +15,7 @@ const usePageOrderResult = () => {
 
   // Список покупок
   const basket = useSelector(state => state.basket)
-  const orders = useMemo(() => Object.values(basket), [basket])
+  const orders = useMemo(() => basket ? Object.values(basket) : [], [basket])
 
   // Общая цена
   const price = useMemo(() => getFullPrice(basket), [basket])
@@ -29,7 +29,7 @@ const usePageOrderResult = () => {
     street,
     name,
     delivery
-  } = useSelector(state => state.userData)
+  } = useSelector(state => state.userData) || {}
 
   // Очищаем данные после того как покинем страницу
   useEffect(() => {
