@@ -8,6 +8,8 @@ import getDeviceSize from 'helpers/getDeviceSize'
 import { configureStore } from 'reducers/index'
 import { Provider } from 'react-redux'
 import serialize from 'serialize-javascript'
+import bot from './bot'
+import cookieParser from 'cookie-parser'
 
 const assets = require(process.env.RAZZLE_ASSETS_MANIFEST)
 
@@ -52,8 +54,12 @@ export const renderApp = (req, res) => {
 const server = express()
 server
   .disable('x-powered-by')
+  .use(express.json())
+  .use(express.urlencoded({ extended: false }))
+  .use(cookieParser())
   .use(express.static(process.env.RAZZLE_PUBLIC_DIR))
   .use('/payment', paymentRouter)
+  .use('/bot', bot)
   .get('/*', (req, res) => {
     const context = {}
     const device = getDeviceSize(req)
