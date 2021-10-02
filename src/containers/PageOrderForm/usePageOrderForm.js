@@ -1,4 +1,4 @@
-import { useMemo, useCallback, useEffect } from 'react'
+import { useMemo, useCallback, useEffect, useState } from 'react'
 import { useDispatch, useSelector } from 'react-redux'
 import { getFullPrice } from 'utils/priceUtils'
 import axios from 'axios'
@@ -10,6 +10,8 @@ import useSearchValues from 'utils/useSearchValues'
 import { isBrowser } from 'utils'
 
 const usePageOrderForm = () => {
+  const [botError, setBotError] = useState(undefined)
+
   // Появляется когда идет редирект со страницы оплаты
   const { orderId } = useSearchValues()
 
@@ -39,7 +41,7 @@ const usePageOrderForm = () => {
             orderId
           })
         } catch (e) {
-          console.log(e)
+          setBotError(true)
         }
       }
       getBotRequest()
@@ -78,7 +80,8 @@ const usePageOrderForm = () => {
 
   return {
     onSubmit,
-    price
+    price,
+    botError
   }
 }
 export default usePageOrderForm

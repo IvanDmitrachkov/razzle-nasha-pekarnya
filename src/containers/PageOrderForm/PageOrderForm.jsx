@@ -23,7 +23,20 @@ import Price from 'containers/PageOrderForm/Price/Price'
 
 const PageOrderForm = () => {
   const { form: formMeta } = useMeta()
-  const { onSubmit } = usePageOrderForm()
+  const {
+    onSubmit,
+    botError
+  } = usePageOrderForm()
+
+  if (botError) {
+    return (
+      <div className={css.errorBlock}>
+        <Header />
+        <h2 className={css.title}>Не удалось произвести оплату</h2>
+        <div>Произошла ошибка бота. Обратитесь к нашему администратору</div>
+      </div>
+    )
+  }
 
   return (
     <Form

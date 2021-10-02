@@ -24,6 +24,15 @@ $bigFieldWidth: 66.66%;
   }
 }
 
+.errorBlock {
+  margin-top: 2.4rem;
+  @include container;
+
+  @include media-mobile {
+    @include container-m;
+  }
+}
+
 .fieldName {
   margin-bottom: 4.8rem;
   width: $bigFieldWidth;
