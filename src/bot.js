@@ -38,7 +38,9 @@ router.post('/', jsonParser, async (req, res) => {
       textarea,
       region,
       delivery,
-      name
+      name,
+      shop,
+      deliveryType
     } = {},
     orders
   } = req.body || {}
@@ -50,11 +52,16 @@ router.post('/', jsonParser, async (req, res) => {
     } = order
     return `  • ${title}, ${count}шт, ${discountPrice || price}р.`
   })
+
+  const addressText = deliveryType === '1'
+    ? `${region}, ул.${street}, д.${house}, подъезд ${frontDoor}, этаж ${floor}, кв.${flat}`
+    : ''
+
   // Формировние текста
   const message = `
-  Заказ на сумму ${price}р. ${delivery ? 'Доставка ' + delivery + 'р.' : ''}\n
+  Заказ на сумму ${price}р. ${delivery ? 'Доставка ' + delivery + 'р.' : `Самовывоз: ${shop}`}\n
 ${name} \n
-${region}, ул.${street}, д.${house}, подъезд ${frontDoor}, этаж ${floor}, кв.${flat}\n
+${addressText}\n
 ${textarea ? 'Комментарий: ' + textarea + '\n' : ''}
 Товары:
 ${preparedOrders.join('\n')}

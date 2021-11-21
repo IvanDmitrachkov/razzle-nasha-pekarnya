@@ -1,6 +1,12 @@
 import { composeValidators, maxValue, minValue, required } from 'utils/validators'
 
 export const fields = {
+  shops: {
+    name: 'shop'
+  },
+  deliveryType: {
+    name: 'deliveryType'
+  },
   name: {
     name: 'name',
     label: 'Ваше имя',

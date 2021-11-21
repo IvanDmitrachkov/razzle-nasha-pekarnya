@@ -19,6 +19,8 @@ import { fields } from 'containers/PageOrderForm/fields'
 import FieldRegion from 'containers/PageOrderForm/FieldRegion/FieldRegion'
 import Delivery from 'containers/PageOrderForm/Delivery/Delivery'
 import Price from 'containers/PageOrderForm/Price/Price'
+import RadioSwitcherDelivery from 'containers/PageOrderForm/RadioSwitcherDelivery/RadioSwitcherDelivery'
+import FieldShops from 'containers/PageOrderForm/FieldShops/FieldShops'
 
 const PageOrderForm = () => {
   const { form: formMeta } = useMeta()
@@ -42,7 +44,8 @@ const PageOrderForm = () => {
       render={({
         handleSubmit,
         submitFailed,
-        submitting
+        submitting,
+        values
       }) => (
         <form onSubmit={handleSubmit}>
           <Helmet {...formMeta} />
@@ -61,45 +64,56 @@ const PageOrderForm = () => {
                 {...fields.phone}
               />
             </div>
-            <div className={css.subtitle}>Адрес доставки</div>
-            <ul className={css.rowFields}>
-              <li className={css.bigField}>
-                <FieldRegion />
-              </li>
-              <li className={css.field}>
-                <Delivery />
-              </li>
-              <li className={css.bigField}>
-                <Field
-                  component={Input}
-                  {...fields.street}
-                />
-              </li>
-              <li className={css.field}>
-                <Field
-                  component={Input}
-                  {...fields.house}
-                />
-              </li>
-              <li className={css.field}>
-                <Field
-                  component={Input}
-                  {...fields.frontDoor}
-                />
-              </li>
-              <li className={css.field}>
-                <Field
-                  component={Input}
-                  {...fields.floor}
-                />
-              </li>
-              <li className={css.field}>
-                <Field
-                  component={Input}
-                  {...fields.flat}
-                />
-              </li>
-            </ul>
+            <div className={css.fieldName}>
+              <RadioSwitcherDelivery />
+            </div>
+            {values[fields.deliveryType.name] === '0'
+              ? <>
+                <div className={css.subtitle}>Адрес доставки</div>
+                <ul className={css.rowFields}>
+                  <li className={css.bigField}>
+                    <FieldRegion />
+                  </li>
+                  <li className={css.field}>
+                    <Delivery />
+                  </li>
+                  <li className={css.bigField}>
+                    <Field
+                      component={Input}
+                      {...fields.street}
+                    />
+                  </li>
+                  <li className={css.field}>
+                    <Field
+                      component={Input}
+                      {...fields.house}
+                    />
+                  </li>
+                  <li className={css.field}>
+                    <Field
+                      component={Input}
+                      {...fields.frontDoor}
+                    />
+                  </li>
+                  <li className={css.field}>
+                    <Field
+                      component={Input}
+                      {...fields.floor}
+                    />
+                  </li>
+                  <li className={css.field}>
+                    <Field
+                      component={Input}
+                      {...fields.flat}
+                    />
+                  </li>
+                </ul>
+              </>
+              : <ul className={css.rowFields}>
+                <li className={css.bigField}>
+                  <FieldShops />
+                </li>
+              </ul>}
             <Field
               className={css.textArea}
               component={TextArea}

@@ -1,0 +1,25 @@
+.container {
+  display: inline-flex;
+  border-radius: .4rem;
+  background: #F2F2F2;
+}
+
+.input {
+  width: 0;
+  height: 0;
+  display: none;
+}
+
+.label {
+  span {
+    display: block;
+    font-size: 1.8rem;
+    padding: 1.6rem 3.2rem;
+    border-radius: .4rem;
+  }
+
+  .input:checked + span {
+    background: $colorBrown;
+    color: white;
+  }
+}
