@@ -57,6 +57,7 @@
   background-color: #F2F2F2;
   border-radius: .4rem;
   border-color: transparent;
+  box-shadow: $inputShadows!important;
 
   @include media-mobile {
     padding: 1.8rem 1.2rem 0;

@@ -2,6 +2,7 @@
   display: inline-flex;
   border-radius: .4rem;
   background: #F2F2F2;
+  box-shadow: $inputShadows!important;
 }
 
 .input {
@@ -21,5 +22,6 @@
   .input:checked + span {
     background: $colorBrown;
     color: white;
+    box-shadow: $inputShadows!important;
   }
 }
