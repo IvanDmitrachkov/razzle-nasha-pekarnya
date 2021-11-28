@@ -4,11 +4,11 @@ import css from 'containers/PageOrderForm/RadioSwitcherDelivery/radioSwitcherDel
 
 const options = [
   {
-    value: '0',
+    value: '1',
     label: 'Доставка'
   },
   {
-    value: '1',
+    value: '0',
     label: 'Самовывоз'
   }
 ]

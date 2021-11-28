@@ -2,6 +2,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { useMemo, useEffect } from 'react'
 import { getFullPrice } from 'utils/priceUtils'
 import { useLocation } from 'react-router'
+import _ from 'lodash'
 
 const usePageOrderResult = () => {
   const dispatch = useDispatch()
@@ -28,7 +29,9 @@ const usePageOrderResult = () => {
     textarea,
     street,
     name,
-    delivery
+    delivery = 0,
+    deliveryType,
+    shop
   } = useSelector(state => state.userData) || {}
 
   // Очищаем данные после того как покинем страницу
@@ -43,12 +46,14 @@ const usePageOrderResult = () => {
     }
   }, [])
 
-  const contacts = useMemo(() => ([
+  const withDelivery = deliveryType === '1'
+
+  const contacts = useMemo(() => _.compact([
     {
       title: 'Ваше имя',
       value: name
     },
-    {
+    withDelivery && {
       title: 'Адрес',
       value: `г.Сыктывкар, ул. ${street}, д.${house}, кв.${floor} (${frontDoor}й подъезд)`
     },
@@ -65,14 +70,16 @@ const usePageOrderResult = () => {
       value: 'По карте (была произведена)'
     },
     {
-      title: 'Доставка',
-      value: delivery ? `${delivery} руб.` : 'Бесплатно'
+      title: withDelivery ? 'Доставка' : 'Самовывоз',
+      value: withDelivery
+        ? delivery ? `${delivery} руб.` : 'Бесплатно'
+        : shop
     },
     {
       title: 'Номер заказа',
       value: orderId || 'Без номера заказа'
     }
-  ]), [orders, orderId])
+  ]), [withDelivery, orders, orderId])
 
   const priceData = { title: 'Итого', value: `${+price + +delivery}.00 руб.` }
 

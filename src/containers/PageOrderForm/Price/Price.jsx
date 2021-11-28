@@ -8,7 +8,7 @@ import { useFormState } from 'react-final-form'
 const Price = () => {
   const {
     values: {
-      delivery
+      delivery = 0
     }
   } = useFormState()
 

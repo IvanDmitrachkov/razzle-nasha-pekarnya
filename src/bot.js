@@ -37,7 +37,7 @@ router.post('/', jsonParser, async (req, res) => {
       flat,
       textarea,
       region,
-      delivery,
+      delivery = 0,
       name,
       shop,
       deliveryType
@@ -48,18 +48,27 @@ router.post('/', jsonParser, async (req, res) => {
   // Парсинг товаров в корзине
   const preparedOrders = _.map(orders, (order) => {
     const {
-      count, discountPrice, price, title
+      count,
+      discountPrice,
+      price,
+      title
     } = order
     return `  • ${title}, ${count}шт, ${discountPrice || price}р.`
   })
 
-  const addressText = deliveryType === '1'
+  const withDelivery = deliveryType === '1'
+
+  /** текст адреса */
+  const addressText = withDelivery
     ? `${region}, ул.${street}, д.${house}, подъезд ${frontDoor}, этаж ${floor}, кв.${flat}`
     : ''
 
   // Формировние текста
   const message = `
-  Заказ на сумму ${price}р. ${delivery ? 'Доставка ' + delivery + 'р.' : `Самовывоз: ${shop}`}\n
+  Заказ на сумму ${price}р.\n
+  ${withDelivery
+    ? `Доставка ${delivery + ' р.' || 'Бесплатно'}`
+    : `Самовывоз с ${shop}`} \n
 ${name} \n
 ${addressText}\n
 ${textarea ? 'Комментарий: ' + textarea + '\n' : ''}

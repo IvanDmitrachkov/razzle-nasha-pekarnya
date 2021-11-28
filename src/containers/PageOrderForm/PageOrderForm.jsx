@@ -67,7 +67,7 @@ const PageOrderForm = () => {
             <div className={css.fieldName}>
               <RadioSwitcherDelivery />
             </div>
-            {values[fields.deliveryType.name] === '0'
+            {values[fields.deliveryType.name] === '1'
               ? <>
                 <div className={css.subtitle}>Адрес доставки</div>
                 <ul className={css.rowFields}>
